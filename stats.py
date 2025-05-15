@@ -16,6 +16,11 @@ def charakter_count(f):
 			letter_count[i] += 1
 		except Exception:
 			letter_count[i] = 1
-
-	return letter_count
-
+	del letter_count[" "]
+	return sort_characters(letter_count)
+def sort_characters(letter_count):
+    char_list = []
+    for char, count in letter_count.items():
+        char_list.append({"char": char, "num": count})
+    char_list.sort(reverse=True, key=lambda item: item["num"])
+    return char_list
